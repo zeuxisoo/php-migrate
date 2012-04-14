@@ -4,6 +4,8 @@
 	
 ### Usage
 
+**Support MYSQL Only**
+
 Console Mode
 	
 	php cmd.php help
