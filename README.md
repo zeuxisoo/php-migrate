@@ -22,7 +22,11 @@ Create migration file of user table
 	php cmd.php db:create create_user_table
 
 Update content of migration file
-	
+
+	/*
+	 * Reference Function:	
+	 *   http://docs.fuelphp.com/classes/database/dbutil.html
+	 */
 	class Create_User_Table_Migration extends Migration {
 		public function up() {
 			$this->create_table('user', array(
