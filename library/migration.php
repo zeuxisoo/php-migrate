@@ -251,4 +251,3 @@ class Migration {
 		return ', '.implode(',', $foreign_key_list);
 	}
 }
-?>
