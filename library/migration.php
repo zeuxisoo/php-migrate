@@ -26,7 +26,7 @@ class Migration {
 		}
 
 		if (empty($options['foreign_keys']) === false) {
-			$sql .= self::foreign_keys($options['foreign_keys']);
+			$sql .= self::process_foreign_keys($options['foreign_keys']);
 		}
 
 		$sql .= "\n)";
