@@ -44,6 +44,19 @@ class Migration {
 		return Database::instance()->update('RENAME TABLE '.DataBase::quote_identifier(DataBase::table_prefix($table)).' TO '.DataBase::quote_identifier(DataBase::table_prefix($new_table_name)));
 	}
 
+	public static function add_foreign_key($table, $foreign_key) {
+		if (is_array($foreign_key) === false) {
+			throw new InvalidArgumentException('Foreign key for add_foreign_key() must be specified as an array');
+		}
+
+		$sql = 'ALTER TABLE ';
+		$sql .= DataBase::quote_identifier(DataBase::table_prefix($table)).' ';
+		$sql .= 'ADD ';
+		$sql .= ltrim(self::process_foreign_keys(array($foreign_key)), ',');
+
+		return Database::instance()->update($sql);
+	}
+
 	protected static function add_columns($table, $columns) {
 		return self::alter_columns('ADD', $table, $columns);
 	}
