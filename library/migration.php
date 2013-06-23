@@ -169,9 +169,9 @@ class Migration {
 				$sql .= ' AUTO_INCREMENT';
 			}
 
-			if (array_key_exists('FIRST', $attribute) === true && $attribute['FIRST'] === true) {
-				$sql .= ' FIRST';
-			}elseif (array_key_exists('AFTER', $attribute) === true && strval($attribute['AFTER']) === true) {
+			if (array_key_exists('FIRST', $attribute) === true) {
+				$sql .= ' FIRST '.DataBase::quote_identifier($attribute['FIRST']);
+			}elseif (array_key_exists('AFTER', $attribute) === true) {
 				$sql .= ' AFTER '.DataBase::quote_identifier($attribute['AFTER']);
 			}
 
@@ -251,3 +251,4 @@ class Migration {
 		return ', '.implode(',', $foreign_key_list);
 	}
 }
+?>
