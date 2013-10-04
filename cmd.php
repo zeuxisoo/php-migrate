@@ -134,4 +134,3 @@ class Cmd {
 }
 
 Cmd::run();
-?>

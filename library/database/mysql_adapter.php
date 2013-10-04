@@ -30,15 +30,13 @@ class MySQL_Adapter extends Database_Adapter {
 		if(mysql_get_server_info() > '4.1') {
 			$charset = str_replace('-', '', $charset);
 
-			$setup  = "SET NAMES '".$charset."',";
-			$setup .= "SET CHARACTER_SET_CLIENT = '".$charset."';";
-			$setup .= "SET CHARACTER_SET_RESULTS = '".$charset."';";
+			$this->query("SET NAMES '".$charset."'");
+			$this->query("SET CHARACTER_SET_CLIENT = '".$charset."';");
+			$this->query("SET CHARACTER_SET_RESULTS = '".$charset."';");
 
 			if(mysql_get_server_info() > '5.0.1'){
-				$setup .= "SET sql_mode=''";
+				$this->query("SET sql_mode=''");
 			}
-
-			mysql_query($setup);
 		}
 
 		if (!@mysql_select_db($database)) {
@@ -174,4 +172,3 @@ class MySQL_Adapter extends Database_Adapter {
 	}
 
 }
-?>

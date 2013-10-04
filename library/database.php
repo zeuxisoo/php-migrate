@@ -30,4 +30,3 @@ class Database {
 		return self::$instance->quote_identifier($column);
 	}
 }
-?>

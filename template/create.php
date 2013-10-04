@@ -10,4 +10,3 @@ class {CLASS_NAME}_Migration extends Migration {
 
 	}
 }
-?>
